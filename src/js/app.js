@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {Component} from "react";
 import ReactDOM from 'react-dom';
-
 import './../sass/style.scss'; // adres do głównego pliku SASS
+import Header from './components/header';
+import MainField from './components/mainField';
+import Footer from './components/footer';
 
-class App extends React.Component {
+class App extends Component {
 
-    showAlert = (e) => {
-        alert(e.target.innerText);
-    }
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            countryName: ""
+        }
+    };
+    currentCountry = (country) => {
+        this.setState({
+            countryName: country
+        });
+    };
     render() {
-        return <h2 ref={el => this.h2 = el} onClick={this.showAlert}>To tylko test!</h2>
+
+        return <>
+            <Header addCountry={this.currentCountry}/>
+            <MainField country={this.state.countryName}/>
+            <Footer/>
+            </>
     }
 
-    componentDidMount() {
-        console.log(this.h2);
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(
-        <>
-            <App />
-        </>,
-        document.getElementById('app')
-    )
-})
+    ReactDOM.render(<App />,document.getElementById('app'));
+});
 

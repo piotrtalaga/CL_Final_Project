@@ -1,1 +1,107 @@
-@import './test/bg';
+// @import './test/bg';
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+*{
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+html, body{
+  font-family: 'Open Sans', sans-serif; ;
+}
+header h1{
+  color: green;
+  text-align: center;
+  font-family: Charmonman;
+  font-size: 32px;
+}
+header form{
+  justify-content: center;
+  align-items: center;
+  label{
+    margin: 0 2px;
+    padding: 0 2px;
+  }
+  input{
+    margin:0 2px;
+  }
+}
+
+header form>input {
+              font-size: 16px;
+              width: 84px;
+              height: 35px;
+              background-color: palegoldenrod;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #FFFFFF;
+              border-radius: 40px;
+              border: none;
+}
+.flex-box{
+  display: flex;
+}
+.container{
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-image: url("../images/antique_mural__02787.1452107523.jpg");
+  background-size: cover;
+}
+.mainBox {
+  width: 75%;
+  height: 65%;
+  margin: 10px 0;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4a4a49;
+  border: 1px dashed paleturquoise;
+  background-color: rgba(4,150, 60, 0.8);
+  text-align: center;
+  h1 {
+    justify-content: center;
+    line-height: 50px;
+    font-size: 25px;
+    img {
+      margin: 2px;
+      width: 75px;
+      height: 50px;
+    }
+    p{
+      margin:2px;
+    }
+  }
+  ul{
+    list-style-type: none;
+    li{
+      padding: 2px 0;
+      a{
+        color: #4a4a49;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+footer{
+  background-color: tan;
+  box-shadow: 0px -5px 40px #00000029;
+  height: 89px;
+  flex-direction: column;
+  justify-content: center;
+  p{
+    color: palegreen;
+    font-weight: lighter;
+    font-size: 26px;
+    margin-bottom: 6.52px;
+    font-family: Charmonman;
+  }
+  a{
+    color: #A5A5A5;
+    font-size: 11px;
+    text-decoration: none;
+  }
+}
