@@ -11,26 +11,44 @@ class MainField extends Component {
 
     //metoda pobierająca dane z API
     getDataFromAPI = () => {
-        fetch(`https://restcountries.eu/rest/v2/name/${this.props.country}`).then(resp => {
-            if (resp.ok && this.props.country.length > 1)
-                return resp.json();
-            else {
-                alert("Type the proper country name");
+        if (this.props.askType === 'all') {
+            fetch(`https://restcountries.eu/rest/v2/${this.props.askType}`).then(resp => {
+                if (resp.ok)
+                    return resp.json();
+                else {
+                    alert(`Type the proper country ${this.props.askType}`);
+                    this.setState({
+                        currentCountry: []
+                    });
+                    throw new Error('Błąd sieci!');
+                }
+            }).then(country => {
+                console.log('Mój piękny kraj:', country);
                 this.setState({
-                    currentCountry: []
+                    currentCountry: country,
                 });
-                throw new Error('Błąd sieci!');
-            }
-        }).then(country => {
-            console.log('Mój piękny kraj:', country);
-            this.setState({
-                currentCountry: country,
-                isDataLoaded: true
             });
-        });
+        }
+        else {
+            fetch(`https://restcountries.eu/rest/v2/${this.props.askType}/${this.props.country}`).then(resp => {
+                if (resp.ok && this.props.country.length > 1)
+                    return resp.json();
+                else {
+                    alert(`Type the proper country ${this.props.askType}`);
+                    this.setState({
+                        currentCountry: []
+                    });
+                    throw new Error('Błąd sieci!');
+                }
+            }).then(country => {
+                console.log('Mój piękny kraj:', country);
+                this.setState({
+                    currentCountry: country,
+                });
+            });
 
-    };
-
+        };
+    }
     //metoda uruchamiana po wybraniu jednego kraju z listy, kieruje nas do tego wybranego
     linkToCountryHandler = (event, country) => {
         event.preventDefault();
@@ -39,10 +57,17 @@ class MainField extends Component {
             currentCountry: [country]
         });
     };
+    sortCountriesHandler = (event, id) => {
+        event.preventDefault();
+        this.getDataFromAPI();
+        if (id === 1) {
+        }
+    }
 
     //gdy zmienią się propsy uruchamiana jest metoda pobierająca dane z API
     componentDidUpdate(prevProps) {
-        if (this.props.country !== prevProps.country) {
+        if (this.props.country !== prevProps.country || (this.props.askType !== prevProps.askType
+        && this.props.askType !== 'all')) {
             this.getDataFromAPI();
         }
     }
@@ -50,6 +75,22 @@ class MainField extends Component {
     render() {
         let {currentCountry} = this.state;
         //wyświetla się gdy nie ma wybranego żadnego kraju
+        if (this.props.showMore) {
+            return (
+                <div className='container flex-box'>
+                    <div className='mainBox'>
+                        <ul>
+                            <li><a href='#'
+                                   onClick={e => this.sortCountriesHandler(e, 1)}>Biggest countries by area</a>
+                            </li>
+                            <li>Smallest countries by area</li>
+                            <li>Biggest countries by population</li>
+                            <li>Smallest countries by population</li>
+                        </ul>
+                    </div>
+                </div>
+            )
+        }
         if (currentCountry.length === 0) {
             return (
                 <div className='container flex-box'>

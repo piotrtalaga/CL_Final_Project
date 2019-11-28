@@ -11,19 +11,32 @@ class App extends Component {
         super(props);
         this.state = {
             countryName: "",
-            askType: 'name'
+            askType: 'name',
+            isShowMoreSelected: false
         }
     };
-    currentCountry = (country) => {
+    currentCountry = (country, askType) => {
         this.setState({
-            countryName: country
+            countryName: country,
+            askType: askType
         });
+    };
+    showMoreChanger = (showMore) => {
+        this.setState({
+            isShowMoreSelected: showMore
+        });
+        if(showMore){
+            this.setState({
+                countryName:'',
+                askType: 'all'
+            });
+        }
     };
     render() {
 
         return <>
-            <Header addCountry={this.currentCountry}/>
-            <MainField country={this.state.countryName}/>
+            <Header addCountry={this.currentCountry} showMoreChanger={this.showMoreChanger}/>
+            <MainField country={this.state.countryName} askType={this.state.askType} showMore={this.state.isShowMoreSelected}/>
             <Footer/>
             </>
     }

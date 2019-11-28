@@ -34,6 +34,9 @@ header form{
   input{
     margin:4px 2px;
   }
+  button{
+    margin: 2px;
+  }
 }
 
 header form>input {
@@ -48,6 +51,7 @@ header form>input {
               border-radius: 40px;
               border: none;
 }
+
 .flex-box{
   display: flex;
 }
@@ -55,13 +59,13 @@ header form>input {
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 117vh;
   background-image: url("../images/antique_mural__02787.1452107523.jpg");
   background-size: cover;
 }
 .mainBox {
   width: 75%;
-  height: 65%;
+  height: 75%;
   margin: 10px 0;
   padding: 10px;
   flex-direction: column;
