@@ -10,7 +10,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            countryName: ""
+            countryName: "",
+            askType: 'name'
         }
     };
     currentCountry = (country) => {
