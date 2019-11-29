@@ -8,6 +8,7 @@ class MainField extends Component {
     state = {
         currentCountry: [],
         showMore: this.props.showMore,
+        allCountries: []
     };
 
     //metoda pobierająca dane z API
@@ -26,7 +27,7 @@ class MainField extends Component {
             }).then(country => {
                 console.log('Mój piękny kraj:', country);
                 this.setState({
-                    currentCountry: country,
+                    allCountries: country,
                 });
             });
         } else {
@@ -62,10 +63,28 @@ class MainField extends Component {
     sortCountriesHandler = (event, id) => {
         event.preventDefault();
         //this.getDataFromAPI();
-        let allCountries = [...this.state.currentCountry];
+        let allCountries = [...this.state.allCountries];
         let selectedCountries = [];
         if (id == 1) {
+            allCountries.sort((a,b) => b.area - a.area);
+            for(let i = 0; i<10; i++){
+                selectedCountries.push(allCountries[i]);
+            }
+        }
+        if (id == 2) {
             allCountries.sort((a,b) => a.area - b.area);
+            for(let i = 0; i<10; i++){
+                selectedCountries.push(allCountries[i]);
+            }
+        }
+        if (id == 3) {
+            allCountries.sort((a,b) => b.population - a.population);
+            for(let i = 0; i<10; i++){
+                selectedCountries.push(allCountries[i]);
+            }
+        }
+        if (id == 4) {
+            allCountries.sort((a,b) => a.population - b.population);
             for(let i = 0; i<10; i++){
                 selectedCountries.push(allCountries[i]);
             }
@@ -73,8 +92,8 @@ class MainField extends Component {
         console.log(selectedCountries);
         this.setState({
             currentCountry: selectedCountries,
-            //showMore: false
         })
+        this.props.showMoreChanger(false);
     }
 
 
@@ -85,10 +104,14 @@ class MainField extends Component {
         }
     }
 
+
+    /// render
+
+
     render() {
         let {currentCountry} = this.state;
-        //wyświetla się gdy nie ma wybranego żadnego kraju
-        if (this.state.showMore) {
+        //wyświetla się gdy klikniemy w przycisk showMore
+        if (this.props.showMore) {
             return (
                 <div className='container flex-box'>
                     <div className='mainBox'>
@@ -96,9 +119,13 @@ class MainField extends Component {
                             <li><a href='#'
                                    onClick={e => this.sortCountriesHandler(e, 1)}>Biggest countries by area</a>
                             </li>
-                            <li>Smallest countries by area</li>
-                            <li>Biggest countries by population</li>
-                            <li>Smallest countries by population</li>
+                            <li><a href='#'
+                                   onClick={e => this.sortCountriesHandler(e, 2)}>Smallest countries by area</a>
+                            </li>
+                            <li><a href='#'
+                                   onClick={e => this.sortCountriesHandler(e, 3)}>Biggest countries by population</a></li>
+                            <li><a href='#'
+                                   onClick={e => this.sortCountriesHandler(e, 4)}>Smallest countries by population</a></li>
                         </ul>
                     </div>
                 </div>

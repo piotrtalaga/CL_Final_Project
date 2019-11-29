@@ -36,7 +36,7 @@ class App extends Component {
 
         return <>
             <Header addCountry={this.currentCountry} showMoreChanger={this.showMoreChanger}/>
-            <MainField country={this.state.countryName} askType={this.state.askType} showMore={this.state.isShowMoreSelected}/>
+            <MainField country={this.state.countryName} askType={this.state.askType} showMore={this.state.isShowMoreSelected} showMoreChanger={this.showMoreChanger}/>
             <Footer/>
             </>
     }
