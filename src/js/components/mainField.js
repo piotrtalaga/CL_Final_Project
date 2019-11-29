@@ -7,6 +7,7 @@ class MainField extends Component {
     //tablica zawierająca wyszukane kraje, przechowywana w state
     state = {
         currentCountry: [],
+        showMore: this.props.showMore,
     };
 
     //metoda pobierająca dane z API
@@ -28,8 +29,7 @@ class MainField extends Component {
                     currentCountry: country,
                 });
             });
-        }
-        else {
+        } else {
             fetch(`https://restcountries.eu/rest/v2/${this.props.askType}/${this.props.country}`).then(resp => {
                 if (resp.ok && this.props.country.length > 1)
                     return resp.json();
@@ -47,7 +47,8 @@ class MainField extends Component {
                 });
             });
 
-        };
+        }
+        ;
     }
     //metoda uruchamiana po wybraniu jednego kraju z listy, kieruje nas do tego wybranego
     linkToCountryHandler = (event, country) => {
@@ -57,17 +58,29 @@ class MainField extends Component {
             currentCountry: [country]
         });
     };
+    // funkcja do wyszukiwania największych lub najmniejszych krajów
     sortCountriesHandler = (event, id) => {
         event.preventDefault();
-        this.getDataFromAPI();
-        if (id === 1) {
+        //this.getDataFromAPI();
+        let allCountries = [...this.state.currentCountry];
+        let selectedCountries = [];
+        if (id == 1) {
+            allCountries.sort((a,b) => a.area - b.area);
+            for(let i = 0; i<10; i++){
+                selectedCountries.push(allCountries[i]);
+            }
         }
+        console.log(selectedCountries);
+        this.setState({
+            currentCountry: selectedCountries,
+            //showMore: false
+        })
     }
+
 
     //gdy zmienią się propsy uruchamiana jest metoda pobierająca dane z API
     componentDidUpdate(prevProps) {
-        if (this.props.country !== prevProps.country || (this.props.askType !== prevProps.askType
-        && this.props.askType !== 'all')) {
+        if (this.props.country !== prevProps.country || this.props.askType !== prevProps.askType) {
             this.getDataFromAPI();
         }
     }
@@ -75,7 +88,7 @@ class MainField extends Component {
     render() {
         let {currentCountry} = this.state;
         //wyświetla się gdy nie ma wybranego żadnego kraju
-        if (this.props.showMore) {
+        if (this.state.showMore) {
             return (
                 <div className='container flex-box'>
                     <div className='mainBox'>

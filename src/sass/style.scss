@@ -1,55 +1,16 @@
 // @import './test/bg';
 @import url('https://fonts.googleapis.com/css?family=Charmonman');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Copse&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Voltaire&display=swap');
+@import "elements/header";
 *{
   margin: 0 auto;
   box-sizing: border-box;
 }
 html, body{
   font-family: 'Open Sans', sans-serif; ;
-}
-header {
-  box-shadow: 0px 3px 6px #00000029;
-  background-color: rgba(250,250,210, 0.8);
-}
-header h1{
-  color: green;
-  text-align: center;
-  font-family: Charmonman;
-  font-size: 32px;
-}
-header form{
-  justify-content: center;
-  align-items: center;
-  label{
-    margin: 0 2px;
-    padding: 0 2px;
-    font-weight: bold;
-    input{
-      border-radius: 5px;
-      border: 1px solid green;
-      font-size: 16px;
-    }
-  }
-  input{
-    margin:4px 2px;
-  }
-  button{
-    margin: 2px;
-  }
-}
-
-header form>input {
-              font-size: 16px;
-              width: 84px;
-              height: 35px;
-              background-color: palegoldenrod;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              color: #FFFFFF;
-              border-radius: 40px;
-              border: none;
 }
 
 .flex-box{
@@ -78,21 +39,28 @@ header form>input {
   h1 {
     justify-content: center;
     line-height: 50px;
-    font-size: 25px;
+    font-size: 37px;
     img {
       margin: 2px;
       width: 75px;
       height: 50px;
     }
     p{
-      margin:2px 15px;
+      margin:2px 23px;
+      font-family: 'Caveat', cursive;
     }
+  }
+  h2{
+    font-family: 'Voltaire', sans-serif;
+    font-weight: bold;
   }
   ul{
     list-style-type: none;
     margin: 13px 0;
     li{
-      padding: 2px 0;
+      padding: 9px 0;
+      font-size: 26px;
+      font-family: 'Caveat', cursive;
       a{
         color: #4a4a49;
         text-decoration: none;
