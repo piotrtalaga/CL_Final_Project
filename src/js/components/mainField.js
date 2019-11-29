@@ -115,7 +115,7 @@ class MainField extends Component {
             return (
                 <div className='container flex-box'>
                     <div className='mainBox'>
-                        <ul>
+                        <ul className='showMoreList'>
                             <li><a href='#'
                                    onClick={e => this.sortCountriesHandler(e, 1)}>Biggest countries by area</a>
                             </li>
@@ -135,7 +135,7 @@ class MainField extends Component {
             return (
                 <div className='container flex-box'>
                     <div className='mainBox'>
-                        <h1>Choose the country</h1>
+                        <h1 className='chooseCountry'>Choose the country</h1>
                     </div>
                 </div>
             )
@@ -152,7 +152,7 @@ class MainField extends Component {
             }
             return (
                 <div className='container flex-box'>
-                    <div className='mainBox '>
+                    <div className='mainBox fewCountries'>
                         <h2>There are more than one matches: choose one</h2>
                         <ul>
                             {countries.map(country => <li><a href='#'

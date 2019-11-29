@@ -55,6 +55,8 @@ html, body{
   h2{
     font-family: 'Voltaire', sans-serif;
     font-weight: bold;
+    font-size: 26px;
+    margin-top: 15px;
   }
   ul{
     list-style-type: none;
@@ -70,23 +72,35 @@ html, body{
     }
   }
 }
-
-footer{
-  background-color: tan;
-  box-shadow: 0px -5px 40px #00000029;
-  height: 89px;
-  flex-direction: column;
-  justify-content: center;
-  p{
-    color: palegreen;
-    font-weight: lighter;
-    font-size: 26px;
-    margin-bottom: 6.52px;
-    font-family: Charmonman;
+.chooseCountry{
+  margin-top: 15px;
+  font-size: 42px;
+}
+.showMoreList li a{
+  font-size: 32px;
+}
+.fewCountries ul {
+  margin-top: 24px;
+  li{
+    font-size: 30px;
   }
-  a{
-    color: #A5A5A5;
-    font-size: 11px;
-    text-decoration: none;
+  footer{
+    background-color: rgb(255,228,181);
+    box-shadow: 0px -5px 40px #00000029;
+    height: 89px;
+    flex-direction: column;
+    justify-content: center;
+    p{
+      color: green;
+      font-weight: lighter;
+      font-size: 26px;
+      margin-bottom: 6.52px;
+      font-family: Charmonman;
+    }
+    a{
+      color: #A5A5A5;
+      font-size: 14px;
+      text-decoration: none;
+    }
   }
 }
